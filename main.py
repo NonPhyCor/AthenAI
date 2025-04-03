@@ -3,10 +3,14 @@ from tkinter import scrolledtext
 import gemini
 from google import genai
 from google.genai import types
+import mcq
 
-history=[types.Content(role="user",parts=[types.Part.from_text(text='hi'),],)]
+score=mcq.score1
+
+history=[types.Content(role="user",parts=[types.Part.from_text(text=f'i have a score of {score}/20 in thermodynamics for chemistry, explain the topic in accordance with the score'),],)]
 out=gemini.generate(history)
 history+=[types.Content(role="model",parts=[types.Part.from_text(text=out)])]
+x=1
 
 class SimpleApp:
     def __init__(self, root):
@@ -38,14 +42,28 @@ class SimpleApp:
         # Create output text box
         self.output_box = scrolledtext.ScrolledText(output_frame, wrap=tk.WORD)
         self.output_box.pack(fill=tk.BOTH, expand=True)
+        global history, x, out
+        if x==1:
+            #self.output_box.config(state=tk.NORMAL)
+            self.output_box.insert(tk.END, f"Model: {out}\n\n")
+            self.output_box.config(state=tk.DISABLED)
+            self.output_box.see(tk.END)
+            x+=1
         
         # Configure output box to be read-only
-        self.output_box.config(state=tk.DISABLED)
+        #self.output_box.config(state=tk.DISABLED)
         
     def send_message(self):
         # Get the input text
         message = self.input_box.get("1.0", tk.END).strip()
         global history
+        '''if x==1:
+            self.output_box.config(state=tk.NORMAL)
+            self.output_box.insert(tk.END, f"Model: {out}\n\n")
+            self.output_box.config(state=tk.DISABLED)
+            self.output_box.see(tk.END)
+            x+=1'''
+
         if message:
             # Enable output box for editing
             self.output_box.config(state=tk.NORMAL)
