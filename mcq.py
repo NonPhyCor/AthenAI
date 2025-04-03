@@ -1,7 +1,11 @@
 import tkinter as tk
-import backend
 from tkinter import messagebox
 import questions
+import topic
+
+t=topic.t
+print('Please wait, Loading!')
+score1=0
 
 class MCQApp:
     def __init__(self, root):
@@ -163,20 +167,21 @@ class MCQApp:
         for q in self.questions:
             if q["user_answer"] == q["correct_answer"]:
                 self.score += 1
-        self.score
+        global score1
+        score1=self.score
         
-        '''result_message = f"You scored {self.score} out of {len(self.questions)}"
+        result_message = f"You scored {self.score} out of {len(self.questions)}"
         messagebox.showinfo("Quiz Results", result_message)
         
         # Option to restart or exit
-        if messagebox.askyesno("Quiz Complete", "Do you want to restart the quiz?"):
+        '''if messagebox.askyesno("Quiz Complete", "Do you want to restart the quiz?"):
             # Reset user answers
             for q in self.questions:
                 q["user_answer"] = None
-            self.current_question = 0
+            self.current_question = 00
             self.display_question()
-        else:
-            self.root.destroy()'''
+        else:'''
+        self.root.destroy()
     
     def start_quiz(self):
         """Start the quiz by displaying the first question."""
@@ -187,12 +192,12 @@ class MCQApp:
 
 
 # Example usage:
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = MCQApp(root)
+#if __name__ == "__main__":
+root = tk.Tk()
+app = MCQApp(root)
 
-    qs= questions.generate('thermodynamics for chemistry')
-    for i in range(20):
+qs= questions.generate(t)
+for i in range(2):
         #question, answers, correct_ans = backend.get_questions(questions.generate('thermodynamics for chemistry'), i)
         question, answers,correct_ans=qs[i]
         app.add_question(
@@ -202,5 +207,5 @@ if __name__ == "__main__":
         )
     
     # Start the quiz
-    app.start_quiz()
-    root.mainloop()
+app.start_quiz()
+root.mainloop()

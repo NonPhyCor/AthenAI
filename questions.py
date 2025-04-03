@@ -24,7 +24,7 @@ def generate(topic):
         tools=tools,
         response_mime_type="text/plain",
         system_instruction=[
-            types.Part.from_text(text="""you give every user a quiz with 20 questions in the chapter as a python list in the form [(Question,[options],answer key as index)]"""),
+            types.Part.from_text(text="""you give every user a quiz with 2 questions in the chapter as a python list in the form [(Question,[options],answer key as index)], use only ascii characters"""),
         ],
     )
 
@@ -36,9 +36,9 @@ def generate(topic):
     ):
         s+=chunk.text
     
-    index=s.index('=')
-    endInd=s.index('```',index)
-    l=(eval((s[index+1:endInd-1])))
+    ind=s.index('=')
+    endInd=s.index('```',ind)
+    l=(eval((s[ind+1:endInd-1])))
     return l
 
 #print(generate('thermodynamics for chemistry'))

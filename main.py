@@ -6,8 +6,10 @@ from google.genai import types
 import mcq
 
 score=mcq.score1
+t=mcq.t
+print('Please wait, Loading!')
 
-history=[types.Content(role="user",parts=[types.Part.from_text(text=f'i have a score of {score}/20 in thermodynamics for chemistry, explain the topic in accordance with the score'),],)]
+history=[types.Content(role="user",parts=[types.Part.from_text(text=f'i have a score of {score}/20 in {t}, explain the topic in accordance with the score'),],)]
 out=gemini.generate(history)
 history+=[types.Content(role="model",parts=[types.Part.from_text(text=out)])]
 x=1
@@ -47,7 +49,7 @@ class SimpleApp:
             #self.output_box.config(state=tk.NORMAL)
             self.output_box.insert(tk.END, f"Model: {out}\n\n")
             self.output_box.config(state=tk.DISABLED)
-            #self.output_box.see(tk.END)
+            self.output_box.see(tk.END)
             x+=1
         
         # Configure output box to be read-only
