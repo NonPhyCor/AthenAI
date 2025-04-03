@@ -192,7 +192,7 @@ if __name__ == "__main__":
     app = MCQApp(root)
 
     qs= questions.generate('thermodynamics for chemistry')
-    for i in range(2):
+    for i in range(20):
         #question, answers, correct_ans = backend.get_questions(questions.generate('thermodynamics for chemistry'), i)
         question, answers,correct_ans=qs[i]
         app.add_question(
