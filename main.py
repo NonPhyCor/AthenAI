@@ -47,7 +47,7 @@ class SimpleApp:
             #self.output_box.config(state=tk.NORMAL)
             self.output_box.insert(tk.END, f"Model: {out}\n\n")
             self.output_box.config(state=tk.DISABLED)
-            self.output_box.see(tk.END)
+            #self.output_box.see(tk.END)
             x+=1
         
         # Configure output box to be read-only
