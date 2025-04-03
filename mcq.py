@@ -79,7 +79,7 @@ class MCQApp:
             command=self.next_question,
             font=("Arial", 12),
             bg="#ffffff",
-            fg="white",
+            fg="black",
             padx=20,
             pady=5
         )
@@ -91,7 +91,7 @@ class MCQApp:
             command=self.prev_question,
             font=("Arial", 12),
             bg="#ffffff",
-            fg="white",
+            fg="black",
             padx=20,
             pady=5,
             state=tk.DISABLED
