@@ -3,7 +3,7 @@ from google.genai import types
 
 def generate(history):
     client = genai.Client(
-        api_key="AIzaSyDf3BIB_Ycm07O5r7owns5DrsveAbjdGU8"
+        api_key="[API_KEY]"
     )
 
     model = "gemini-2.0-flash"
